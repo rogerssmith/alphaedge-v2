@@ -10,72 +10,66 @@ const Header = () => {
   const { company } = useCompany();
 
   return (
-    <header className="max-w-full w-full h-fit min-h-screen bg-hero-bg-gradient bg-cover flex flex-col gap-5">
-      <nav className="flex justify-between px-5 sm:px-10 md:px-20 py-8 items-center">
-        <Logo home />
-
-        <div className="flex items-center gap-3 w-full max-w-[120px] sm:max-w-[250px]">
-          <Link className="w-full hidden sm:block" href={"/register"}>
-            <Button small onClick={() => {}} label={"Sign Up"} />
-          </Link>
-
-          <Link className="w-full" href={"/login"}>
-            <Button outline small onClick={() => {}} label={"Sign In"} />
-          </Link>
+    <div>
+      <nav className="bg-black">
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="relative flex h-16 items-center justify-between">
+            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
+            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <Link
+                className="flex flex-shrink-0 items-center"
+                href={"/register"}
+              >
+                <Image
+                  priority
+                  src={"/logo.png"}
+                  alt={"desktop"}
+                  layout="responsive"
+                  width={150}
+                  height={200}
+                />
+              </Link>
+            </div>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="hidden sm:ml-6 sm:block">
+                <div className="flex space-x-4">
+                  <div
+                    className="relative inline-block text-left"
+                    data-headlessui-state=""
+                  >
+                    <div>
+                      <button
+                        className="inline-flex w-full text-gray-400 justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-700"
+                        id="headlessui-menu-button-:R3cm:"
+                        type="button"
+                        aria-haspopup="menu"
+                        aria-expanded="false"
+                        data-headlessui-state=""
+                      >
+                        Select Language
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                          className="-mr-1 h-5 w-5 text-gray-400"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
-
-      <section
-        className="px-5 sm:px-10 md:px-20 w-full text-white h-full 
-      flex justify-between items-center 
-      gap-20 flex-col lg:flex-row pb-20"
-      >
-        <div className="flex flex-col gap-5 w-full">
-          <h1
-            className="font-bold text-3xl leading-[2.5rem] 
-          sm:text-4xl sm:leading-[3rem] md:text-5xl md:leading-[4rem]"
-          >
-            Make Global tranfer, Invest, Borrow and grow your money with{" "}
-            {company?.name}
-          </h1>
-
-          <h1 className="text-gray-200">
-            We&apos;re here to assist you in making secure and convinient wealth
-            gathering.
-          </h1>
-
-          <div className="w-full max-w-[400px]">
-            <Link href={"/register"}>
-              <Button onClick={() => {}} label={"Get Started"} />
-            </Link>
-          </div>
-        </div>
-
-        <div className="flex gap-5 w-full justify-center">
-          <div className="max-w-[250px] max-h-[500px] w-full">
-            <Image
-              priority
-              src={"/spend.png"}
-              alt={"desktop"}
-              layout="responsive"
-              width={150}
-              height={200}
-            />
-          </div>
-
-          <div className="max-w-[250px] max-h-[500px] w-full translate-y-10">
-            <Image
-              priority
-              src={"/invest.png"}
-              alt={"desktop"}
-              layout="responsive"
-              width={150}
-              height={150}
-            />
-          </div>
-        </div>
-      </section>
-    </header>
+    </div>
   );
 };
 
