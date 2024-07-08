@@ -17,7 +17,7 @@ const Header = () => {
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <Link
-                className="flex flex-shrink-0 items-center"
+                className="flex flex-shrink-0 items-center mt-5"
                 href={"/register"}
               >
                 <Image

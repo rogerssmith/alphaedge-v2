@@ -5,6 +5,9 @@ import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Loader } from "@mantine/core";
+import Hero from "@/components/home/Hero";
+import WorkingWithUs from "@/components/home/WorkingWIthUs";
+import Others from "@/components/home/Others";
 
 const Home = () => {
   const { data: session } = useSession();
@@ -37,6 +40,9 @@ const Home = () => {
   return (
     <>
       <Header />
+      <Hero />
+      <WorkingWithUs />
+      <Others />
       <Footer />
     </>
   );
