@@ -48,14 +48,14 @@ const Card = () => {
       flex flex-col gap-10
     ${
       mode === "light"
-        ? "shadow-gray-200 hover:shadow-gray-300"
-        : " shadow-[#1d1d1d] hover:shadow-[#585858]"
+        ? "shadow-gray-200 hover:shadow-gray-300 text-black"
+        : " shadow-[#1d1d1d] hover:shadow-[#585858] text-black"
     } `}
       >
         <div
           className={`text-xl sm:text-2xl font-bold 
         flex justify-center
-      ${mode === "light" ? "text-slate-700" : "text-white"}`}
+      ${mode === "light" ? "text-slate-700" : "text-black"}`}
         >
           Cards
         </div>
@@ -90,7 +90,7 @@ const Card = () => {
         <div className={`flex flex-col items-center justify-center gap-5`}>
           <div
             className={`text-center font-semibold
-        ${mode === "light" ? "text-gray-500" : "text-gray-300"}`}
+        ${mode === "light" ? "text-black" : "text-black"}`}
           >
             {cards.length <= 0 ? "Add your credit/debit card" : "Add New Card"}
           </div>
@@ -112,10 +112,7 @@ const Card = () => {
               <div className="flex flex-col">
                 <div
                   style={{
-                    color:
-                      mode === "light"
-                        ? primaryLightColor
-                        : primaryVeryLightColor,
+                    color: "black",
                   }}
                   className={`font-bold text-lg`}
                 >
@@ -124,7 +121,7 @@ const Card = () => {
 
                 <div
                   className={`font-semibold text-sm 
-              ${mode === "light" ? "text-gray-500" : "text-gray-300"}`}
+              ${mode === "light" ? "text-black" : "text-black"}`}
                 >
                   Withdraw funds directly to your bank
                 </div>

@@ -7,15 +7,16 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div
-      className={`flex justify-center 
-    min-h-screen h-full pt-[7rem]
+      className={`justify-center 
+    min-h-screen h-full pt-[7rem] px-4
     ${
       mode === "light"
-        ? "bg-white"
-        : "bg-[#121212] transition-colors duration-500"
+        ? "bg-gray-100"
+        : "bg-gray-100 transition-colors duration-500"
     }`}
+      style={{ flex: 1 }}
     >
-      <div className="w-[760px] max-w-[95%]">{children}</div>
+      <div>{children}</div>
     </div>
   );
 };

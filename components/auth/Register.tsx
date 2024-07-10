@@ -166,6 +166,7 @@ const Register = (props: RegisterProps) => {
           label={"Sign Up"}
           onClick={() => setModalOpen(true)}
           loading={loading}
+          primaryColor="#7439b8"
         />
 
         <div className="flex flex-col gap-2.5 w-full items-center">

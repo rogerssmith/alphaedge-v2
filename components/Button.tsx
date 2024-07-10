@@ -14,6 +14,7 @@ interface ButtonProps {
   icon?: IconType;
   loading?: boolean;
   type?: "button" | "reset" | "submit";
+  primaryColor?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -25,16 +26,18 @@ const Button: React.FC<ButtonProps> = ({
   icon: Icon,
   loading,
   type,
+  primaryColor,
 }) => {
   const { company } = useCompany();
-  const primaryColor = company?.color.primary;
+
+  const resolvedPrimaryColor = primaryColor ?? company?.color.primary;
   const primaryVeryLightColor = company?.color.primaryVeryLight;
 
   return (
     <button
       type={type}
       style={{
-        backgroundColor: outline ? "white" : primaryColor,
+        backgroundColor: outline ? "white" : resolvedPrimaryColor,
         borderColor: primaryVeryLightColor,
       }}
       onClick={onClick}

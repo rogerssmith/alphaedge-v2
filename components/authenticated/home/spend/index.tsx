@@ -49,14 +49,14 @@ const Spend = (props: SpendProps) => {
         <div className="flex flex-col gap-1">
           <div
             className={`text-xs font-medium 
-          ${mode === "light" ? "text-slate-700" : "text-white"}`}
+          ${mode === "light" ? "text-slate-700" : "text-black"}`}
           >
             Account Balance
           </div>
 
           <div
             className={`font-bold text-3xl sm:text-4xl 
-          ${mode === "light" ? "text-slate-700" : "text-white"}`}
+          ${mode === "light" ? "text-slate-700" : "text-black"}`}
           >
             {currency}
             {formatNumber(user.accountBalance)}
@@ -66,7 +66,7 @@ const Spend = (props: SpendProps) => {
         <div className="flex flex-col gap-1">
           <div
             className={`text-xs font-medium 
-          ${mode === "light" ? "text-slate-700" : "text-white"}`}
+          ${mode === "light" ? "text-slate-700" : "text-black"}`}
           >
             Pending Balance
           </div>

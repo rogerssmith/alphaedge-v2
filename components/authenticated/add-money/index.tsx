@@ -88,7 +88,7 @@ const AddMoney = () => {
         <div
           className={`flex flex-col items-center 
     gap-10
-    ${mode === "light" ? "text-slate-700" : "text-white"}`}
+    ${mode === "light" ? "text-slate-700" : "text-black"}`}
         >
           <div className="text-2xl font-bold">Add Money</div>
 

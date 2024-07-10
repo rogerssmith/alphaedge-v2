@@ -47,7 +47,7 @@ const Navbar = () => {
           color: getColor(pathName === "/home", spendHover),
         }}
         onClick={() => router.push("/home")}
-        className={`cursor-pointer text-base sm:text-lg 
+        className={`cursor-pointer text-base sm:text-lg
          select-none font-semibold`}
       >
         Spend
@@ -57,13 +57,10 @@ const Navbar = () => {
         onMouseEnter={() => setInvestHover(true)}
         onMouseLeave={() => setInvestHover(false)}
         style={{
-          color: getColor(
-            pathName.includes("/home/invest-and-earn"),
-            investHover
-          ),
+          color: "black",
         }}
         onClick={() => router.push("/home/invest-and-earn")}
-        className={`cursor-pointer text-base sm:text-lg 
+        className={`cursor-pointer text-base sm:text-lg
          select-none font-semibold`}
       >
         Invest And Earn
@@ -77,7 +74,7 @@ const Navbar = () => {
             color: getColor(pathName === "/home/loan", loanHover),
           }}
           onClick={() => router.push("/home/loan")}
-          className={`cursor-pointer text-base sm:text-lg 
+          className={`cursor-pointer text-base sm:text-lg
          select-none font-semibold`}
         >
           Get Loan

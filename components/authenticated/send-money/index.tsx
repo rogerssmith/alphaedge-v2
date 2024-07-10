@@ -30,7 +30,7 @@ const Send = () => {
     >
       <div
         className={`text-xl sm:text-2xl font-bold
-      ${mode === "light" ? "text-slate-700" : "text-white"}`}
+      ${mode === "light" ? "text-slate-700" : "text-black"}`}
       >
         Send Money
       </div>
@@ -47,7 +47,7 @@ const Send = () => {
 
         <div
           className={`text-lg sm:text-xl font-bold text-center
-      ${mode === "light" ? "text-slate-700" : "text-white"}`}
+      ${mode === "light" ? "text-slate-700" : "text-black"}`}
         >
           Methods For Withdrawal
         </div>

@@ -63,7 +63,7 @@ const PaymentCard = (props: PaymentCardProps) => {
 
           <div
             className={`font-semibold text-center 
-              ${mode === "light" ? "text-slate-700" : "text-white"}
+              ${mode === "light" ? "text-slate-700" : "text-black"}
               `}
           >
             {label} {disabled && "(Not Available)"}

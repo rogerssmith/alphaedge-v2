@@ -20,14 +20,7 @@ const Header = () => {
                 className="flex flex-shrink-0 items-center mt-5"
                 href={"/register"}
               >
-                <Image
-                  priority
-                  src={"/logo.png"}
-                  alt={"desktop"}
-                  layout="responsive"
-                  width={150}
-                  height={200}
-                />
+                <Logo />
               </Link>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

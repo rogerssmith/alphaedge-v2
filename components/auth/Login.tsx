@@ -94,6 +94,7 @@ const Login = () => {
           small={false}
           label={"Sign In"}
           loading={loading}
+          primaryColor="#7439b8"
         />
       </form>
 

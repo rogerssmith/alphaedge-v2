@@ -15,7 +15,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
         : " bg-[#121212] transition-colors duration-500"
     }`}
     >
-      <div className="w-[400px] max-w-[90%] flex flex-col items-center gap-10">
+      <div className="w-[400px] max-w-[90%] flex flex-col items-center gap-10 border-2 p-2 rounded-3xl">
         {children}
       </div>
     </div>

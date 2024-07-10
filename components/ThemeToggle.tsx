@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import useTheme from "./hooks/useTheme";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import useCompany from "./hooks/useCompany";
@@ -8,6 +8,12 @@ const ThemeToggle = () => {
   const { mode, onLightMode, onDarkMode } = useTheme();
   const { company } = useCompany();
   const primaryColor = company?.color.primary;
+
+  useEffect(() => {
+    if (mode !== "dark") {
+      onDarkMode();
+    }
+  }, [mode, onDarkMode]);
 
   return (
     <>

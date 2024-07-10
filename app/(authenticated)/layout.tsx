@@ -16,6 +16,7 @@ import { Loader } from "@mantine/core";
 import User from "@/models/User";
 import Button from "@/components/Button";
 import Logout from "@/components/Logout";
+import SideBar from "@/components/authenticated/Sidebar";
 
 const getUser = async (userId: string) => {
   await mongooseConnect();
@@ -51,11 +52,16 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <>
-      <Navbar />
-      <MobileNavbar />
-      <Container>{children}</Container>
-    </>
+    <div className="flex min-h-screen">
+      <SideBar />
+      <div className="flex flex-1 flex-col ml-64">
+        {" "}
+        {/* Adjust margin to match sidebar width */}
+        <Navbar />
+        <MobileNavbar />
+        <Container>{children}</Container>
+      </div>
+    </div>
   );
 };
 
