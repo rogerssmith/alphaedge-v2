@@ -1,7 +1,7 @@
 import FAQ from "./Faq";
 export default function Others() {
   return (
-    <div className="bg-black w-full py-10 lg:px-44 px-0">
+    <div className="bg-black w-full py-10 lg:px-44 px-0 overflow-hidden">
       <div className="lg:px-24 px-0 mx-auto">
         <p className="capitalize font-bold text-center text-white text-3xl mb-9">
           What We Do
@@ -142,12 +142,12 @@ export default function Others() {
             form of the respective networks' native token.
           </p>
         </div>
-        <div className="mb-20">
+        <div className="mb-20 p-4">
           <p className="capitalize font-bold text-white text-3xl mb-9">
             What We Promise
           </p>
-          <div className="grid lg:grid-cols-2 max-w-2xl mx-auto gap-x-40 gap-y-12">
-            <div className="w-96 text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 max-w-2xl mx-auto gap-x-10 gap-y-12">
+            <div className="w-full sm:w-auto text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
               <h2 className="text-white capitalize">High Security</h2>
               <p className="text-gray-400 text-md">
                 The security of our customers' stake is of utmost importance to
@@ -156,7 +156,7 @@ export default function Others() {
                 data-centers, we provide outstanding standards of security.
               </p>
             </div>
-            <div className="w-96 text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
+            <div className="w-full sm:w-auto text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
               <h2 className="text-white capitalize">Compliance</h2>
               <p className="text-gray-400 text-md">
                 We provide a custom staking framework for a variety of clients
@@ -165,7 +165,7 @@ export default function Others() {
                 underlining our commitment to quality standards.
               </p>
             </div>
-            <div className="w-96 text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
+            <div className="w-full sm:w-auto text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
               <h2 className="text-white capitalize">Sustainability</h2>
               <p className="text-gray-400 text-md">
                 We work to make Web 3.0 a reality. Based in Munich, Germany, we
@@ -173,7 +173,7 @@ export default function Others() {
                 infrastructure as sustainable as possible.
               </p>
             </div>
-            <div className="w-96 text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
+            <div className="w-full sm:w-auto text-center border-2 border-[#9D00FF] p-3 space-y-4 card rounded-xl">
               <h2 className="text-white capitalize">
                 Bare Metal Infrastructure
               </h2>
@@ -186,6 +186,7 @@ export default function Others() {
             </div>
           </div>
         </div>
+
         <img
           alt=""
           loading="lazy"

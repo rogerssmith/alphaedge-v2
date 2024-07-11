@@ -7,9 +7,13 @@ import { IoMdPerson, IoMdMenu } from "react-icons/io";
 import useMobileNavbar from "../hooks/useMobileNavbar";
 import useTheme from "../hooks/useTheme";
 import ThemeToggle from "../ThemeToggle";
-import useCompany from "../hooks/useCompany";
 
-const Navbar = () => {
+import useCompany from "../hooks/useCompany";
+type NavbarProps = {
+  toggleSidebar: () => void;
+};
+
+const Navbar = ({ toggleSidebar }: NavbarProps) => {
   const pathName = usePathname();
   const router = useRouter();
   const { onOpen } = useMobileNavbar();
@@ -54,6 +58,7 @@ const Navbar = () => {
           fill="currentColor"
           aria-hidden="true"
           className="h-8 w-8 text-gray-700 cursor-pointer"
+          onClick={toggleSidebar}
         >
           <path
             fill-rule="evenodd"

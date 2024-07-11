@@ -36,7 +36,7 @@ const TextInput = (props: TextInputProps) => {
   return (
     <div
       style={{
-        backgroundColor: isFocus ? "white" : primaryVeryLightColor,
+        backgroundColor: "white",
         borderColor: primaryVeryLightColor,
       }}
       aria-disabled={true}

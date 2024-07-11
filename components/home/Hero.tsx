@@ -6,7 +6,7 @@ export default function Hero() {
     >
       <div className="">
         <img
-          src="/ledger-banner.webp"
+          src="/banner.jpg"
           alt=""
           className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center opacity-25"
         />

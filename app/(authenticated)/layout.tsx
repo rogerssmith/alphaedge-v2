@@ -1,10 +1,8 @@
 // "use client";
 import { getServerSession } from "next-auth";
-import Container from "@/components/authenticated/Container";
-import MobileNavbar from "@/components/authenticated/MobileNavbar";
-import Navbar from "@/components/authenticated/Navbar";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import ClientLayout from "@/components/authenticated/ClientLayout";
 import { signOut, useSession } from "next-auth/react";
 // import { useCallback, useEffect, useState } from "react";
 // import axios from "axios";
@@ -12,11 +10,8 @@ import { signOut, useSession } from "next-auth/react";
 import Lottie from "lottie-react";
 import blockedAnimation from "@/public/lottie/blocked-anim.json";
 import mongooseConnect from "@/lib/mongoose";
-import { Loader } from "@mantine/core";
 import User from "@/models/User";
-import Button from "@/components/Button";
 import Logout from "@/components/Logout";
-import SideBar from "@/components/authenticated/Sidebar";
 
 const getUser = async (userId: string) => {
   await mongooseConnect();
@@ -51,18 +46,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     );
   }
 
-  return (
-    <div className="flex min-h-screen">
-      <SideBar />
-      <div className="flex flex-1 flex-col ml-64">
-        {" "}
-        {/* Adjust margin to match sidebar width */}
-        <Navbar />
-        <MobileNavbar />
-        <Container>{children}</Container>
-      </div>
-    </div>
-  );
+  return <ClientLayout>{children}</ClientLayout>;
 };
 
 export default Layout;

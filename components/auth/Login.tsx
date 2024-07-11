@@ -11,6 +11,7 @@ import Container from "./Container";
 import useTheme from "../hooks/useTheme";
 import ThemeToggle from "../ThemeToggle";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const Login = () => {
   const router = useRouter();
@@ -42,21 +43,14 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="flex flex-col gap-4 w-full items-center">
+      <div className="flex flex-col gap-4 w-full items-center p-5">
         <Logo />
 
-        <ThemeToggle />
-
-        <div
-          className={`font-bold text-2xl md:text-3xl 
-        ${mode === "light" ? "text-slate-700" : "text-white"}`}
-        >
-          Sign In
-        </div>
+        {/* <ThemeToggle /> */}
       </div>
 
       <form
-        className="flex flex-col gap-4 w-full"
+        className="flex flex-col gap-4 w-full p-5"
         onSubmit={(e) => {
           e.preventDefault();
           loginHandler();
@@ -101,7 +95,7 @@ const Login = () => {
       <div className="flex flex-col gap-4 w-full items-center">
         <div
           onClick={() => router.push("/forgot-password")}
-          className={`text-sm text-gray-300 text-center 
+          className={`text-sm text-gray-500 text-center underline 
           font-semibold sm:cursor-pointer hover:text-gray-400 
           active:scale-[.95] transition-all select-none w-fit`}
         >
@@ -110,18 +104,21 @@ const Login = () => {
 
         <div
           className={`font-semibold 
-        ${mode === "light" ? "text-gray-500" : "text-white"}`}
+        ${mode === "light" ? "text-gray-500" : "text-gray-500 underline"}`}
         >
-          Don&apos;t have an account? create one.
+          <Link href={"/register"}>
+            {" "}
+            Don&apos;t have an account? create one.{" "}
+          </Link>
         </div>
 
-        <Button
+        {/* <Button
           outline
           label={"Create new acccount"}
           onClick={() => {
             router.push("/register");
           }}
-        />
+        /> */}
       </div>
     </Container>
   );

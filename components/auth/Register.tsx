@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import validator from "validator";
 import AccountInactivityModal from "./AccountInactivityModal";
+import Link from "next/link";
 
 interface RegisterProps {
   refUsername?: string | string[];
@@ -101,18 +102,12 @@ const Register = (props: RegisterProps) => {
   return (
     <>
       <Container>
-        <div className="flex flex-col gap-2.5 w-full items-center">
+        <div className="flex flex-col gap-2.5 w-full items-center p-5">
           <Logo />
-          <ThemeToggle />
-          <div
-            className={`font-bold text-2xl md:text-3xl 
-        ${mode === "light" ? "text-slate-700" : "text-white"}`}
-          >
-            Create New Account
-          </div>
+          {/* <ThemeToggle /> */}
         </div>
 
-        <div className="flex flex-col gap-2.5 w-full">
+        <div className="flex flex-col gap-2.5 w-full p-5">
           <TextInput
             id="name"
             icon={IoMdPerson}
@@ -158,32 +153,31 @@ const Register = (props: RegisterProps) => {
               setInputs({ ...inputs, refUsername: e.target.value })
             }
           />
+          <Button
+            outline={false}
+            small={false}
+            label={"Sign Up"}
+            onClick={() => setModalOpen(true)}
+            loading={loading}
+            primaryColor="#7439b8"
+          />
         </div>
-
-        <Button
-          outline={false}
-          small={false}
-          label={"Sign Up"}
-          onClick={() => setModalOpen(true)}
-          loading={loading}
-          primaryColor="#7439b8"
-        />
 
         <div className="flex flex-col gap-2.5 w-full items-center">
           <div
             className={`font-semibold 
-        ${mode === "light" ? "text-gray-500" : "text-white"}`}
+        ${mode === "light" ? "text-gray-500" : "text-gray-500 underline"}`}
           >
-            Already have an account?
+            <Link href={"/login"}> Already have an account? Sign in </Link>
           </div>
 
-          <Button
+          {/* <Button
             outline
             label={"Login Instead"}
             onClick={() => {
               router.push("/login");
             }}
-          />
+          /> */}
         </div>
       </Container>
 
