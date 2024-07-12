@@ -55,10 +55,7 @@ const PaymentCard = (props: PaymentCardProps) => {
             />
           )}
           {Icon && (
-            <Icon
-              color={mode === "light" ? primaryColor : primaryLightColor}
-              size={24}
-            />
+            <Icon color={mode === "light" ? "#9D00FF" : "#9D00FF"} size={24} />
           )}
 
           <div
@@ -70,7 +67,7 @@ const PaymentCard = (props: PaymentCardProps) => {
           </div>
         </div>
         <FaAngleRight
-          color={mode === "light" ? primaryColor : primaryLightColor}
+          color={mode === "light" ? "#9D00FF" : "#9D00FF"}
           size={24}
         />
       </div>

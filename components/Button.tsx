@@ -37,8 +37,8 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       style={{
-        backgroundColor: outline ? "white" : resolvedPrimaryColor,
-        borderColor: primaryVeryLightColor,
+        backgroundColor: "#9D00FF",
+        // borderColor: primaryVeryLightColor,
       }}
       onClick={onClick}
       disabled={disabled || loading}
