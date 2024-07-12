@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "../Logo";
+import { FaSignOutAlt } from "react-icons/fa";
 import { signOut } from "next-auth/react";
 
 export default function SideBar() {
@@ -95,19 +96,7 @@ export default function SideBar() {
               onClick={handleSignOut}
             >
               <div className="mr-2">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 1024 1024"
-                  className="h-5 w-5"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M682.4 455.7c-13.2-32.1-32-61.1-56.1-85.1-24-24-53-42.9-85.1-56.1-32.9-13.5-67.8-20.4-103.6-20.4s-70.7 6.9-103.6 20.4c-32.1 13.2-61.1 32-85.1 56.1-24 24-42.9 53-56.1 85.1-13.5 32.9-20.4 67.8-20.4 103.6s6.9 70.7 20.4 103.6c13.2 32.1 32 61.1 56.1 85.1 24 24 53 42.9 85.1 56.1 32.9 13.5 67.8 20.4 103.6 20.4s70.7-6.9 103.6-20.4c32.1-13.2 61.1-32 85.1-56.1 24-24 42.9-53 56.1-85.1 13.5-32.9 20.4-67.8 20.4-103.6s-7-70.7-20.4-103.6zM512 762c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120z"></path>
-                  <path d="M911.8 277.4C834.6 200.1 735.7 152 628.5 139.4v-65c0-30.9-25.1-56-56-56H451.5c-30.9 0-56 25.1-56 56v65c-107.1 12.5-206.1 60.7-283.4 138-93 93-144.2 216.5-144.2 348.1s51.2 255.1 144.2 348.1c93 93 216.5 144.2 348.1 144.2s255.1-51.2 348.1-144.2c93-93 144.2-216.5 144.2-348.1s-51.2-255.1-144.2-348.1zM512 938C276.3 938 86 747.7 86 512S276.3 86 512 86s426 190.3 426 426-190.3 426-426 426z"></path>
-                </svg>
+                <FaSignOutAlt />
               </div>
               <span className="text-sm font-medium">{item.label}</span>
             </button>
