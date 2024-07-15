@@ -60,7 +60,7 @@ const DepositTypeModal = (props: DepositTypeModalProps) => {
           }}
         />
 
-        <Button
+        {/* <Button
           disabled={isBankTransferDisabled}
           loading={loading}
           label={`Bank Transfer ${
@@ -70,7 +70,7 @@ const DepositTypeModal = (props: DepositTypeModalProps) => {
             onClose();
             setSelectedDepositType("bank-transfer");
           }}
-        />
+        /> */}
       </div>
     </ModalContainer>
   );

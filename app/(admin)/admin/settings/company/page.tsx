@@ -96,11 +96,11 @@ const Page = () => {
             icon={FaMoneyBill}
           />
 
-          <SettingsCard
+          {/* <SettingsCard
             onClick={() => setTransferModal(true)}
             label="SetUp Transfer Options"
             icon={FaPaperPlane}
-          />
+          /> */}
 
           <SettingsCard
             onClick={() => setDepositModal(true)}
@@ -126,11 +126,11 @@ const Page = () => {
             icon={FaMoneyCheck}
           />
 
-          <SettingsCard
+          {/* <SettingsCard
             onClick={() => setLoanModal(true)}
             label="Loan Options"
             icon={FaHandHoldingUsd}
-          />
+          /> */}
 
           <SettingsCard
             onClick={() => setPaymentModal(true)}

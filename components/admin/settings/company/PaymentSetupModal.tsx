@@ -82,7 +82,7 @@ const PaymentSetupModal = (props: ModalProps) => {
               />
             </div>
 
-            <div className="w-full flex flex-col">
+            {/* <div className="w-full flex flex-col">
               <div className="font-semibold">Bank Transfer</div>
               <Select
                 size="lg"
@@ -93,7 +93,7 @@ const PaymentSetupModal = (props: ModalProps) => {
                   { label: "OFF", value: "off" },
                 ]}
               />
-            </div>
+            </div> */}
           </div>
         </div>
 

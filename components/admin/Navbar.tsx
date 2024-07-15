@@ -150,7 +150,7 @@ const AdminNavbar = () => {
             <div className="hidden sm:block">Transactions</div>
           </div>
 
-          <div
+          {/* <div
             onMouseEnter={() => setCardHover(true)}
             onMouseLeave={() => setCardHover(false)}
             style={{
@@ -162,7 +162,7 @@ const AdminNavbar = () => {
           >
             <FaCreditCard size={24} />
             <div className="hidden sm:block">Cards</div>
-          </div>
+          </div> */}
 
           <div
             onMouseEnter={() => setWalletHover(true)}
