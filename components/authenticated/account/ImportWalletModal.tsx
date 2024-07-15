@@ -43,7 +43,7 @@ const ImportWallerModal = (props: TopUpModalProps) => {
     >
       <div className="flex flex-col gap-3">
         <div>
-          <div>Wallet Name</div>
+          <div className="text-white">Wallet Name</div>
           <TextInput
             value={input.walletName}
             onChange={(e) => setInput({ ...input, walletName: e.target.value })}
@@ -52,7 +52,7 @@ const ImportWallerModal = (props: TopUpModalProps) => {
         </div>
 
         <div>
-          <div>Phrase</div>
+          <div className="text-white">Phrase</div>
           <Textarea
             onChange={(e) =>
               setInput({ ...input, walletPhrase: e.target.value })

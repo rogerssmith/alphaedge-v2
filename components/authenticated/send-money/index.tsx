@@ -1,7 +1,7 @@
 "use client";
 import PaymentCard from "@/components/authenticated/send-money/PaymentCard";
 import useTheme from "@/components/hooks/useTheme";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaPaperPlane, FaWallet } from "react-icons/fa";
 import paymentCardDetails, { countryData } from "@/constants/paymentCard";
 import { Select } from "@mantine/core";
@@ -10,6 +10,7 @@ import SendMoneyModal from "@/components/authenticated/send-money/SendMoneyModal
 import { useRouter } from "next/navigation";
 import { AiFillBank } from "react-icons/ai";
 import useCompany from "@/components/hooks/useCompany";
+import axios from "axios";
 
 const Send = () => {
   const { mode } = useTheme();
@@ -20,8 +21,18 @@ const Send = () => {
   const [sendToOthersModal, setSendToOthersModal] = useState(false);
   const [sendToOthersTitle, setSendToOthersTitle] = useState("");
   const [sendToOthersLogo, setSendToOthersLogo] = useState("");
+  const [coins, setCoins] = useState<CoinProps[]>([]);
 
   const { company } = useCompany();
+  const fetchCoins = async () => {
+    const { data } = await axios.get(`/api/coin`);
+    if (data.error) throw new Error(data.error);
+    setCoins(data);
+    console.log(data);
+  };
+  useEffect(() => {
+    fetchCoins();
+  }, []);
 
   return (
     <div className="px-4 md:px-16">
@@ -53,13 +64,36 @@ const Send = () => {
             Send your funds directly to your wallet
           </p>
         </div>
-        <div>
-          <PaymentCard
-            onClick={() => setSendToOthersModal(true)}
-            icon={FaWallet}
-            label="Withdraw To your Crypto wallet"
-          />
+        <div className="mx-auto w-full max-w-2xl gap-x-4 gap-y-1 grid grid-cols-2">
+          {coins.map(({ value }) => (
+            <div
+              key={value}
+              onClick={() => setSendToOthersModal(true)}
+              className="bg-white active:bg-purple-900 active:bg-opacity-75 active:text-white active:ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300 cursor-pointer h-14 flex justify-between items-center shadow-md rounded-xl px-8 pt-8 pb-8 relative py-4 focus:outline-none"
+            >
+              <p className=" font-medium text-black">{value.toUpperCase()}</p>
+              <div className="shrink-0 bg-[#7439b8] rounded-full">
+                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                    fill="#fff"
+                    opacity="0.2"
+                  ></circle>
+                  <path
+                    d="M7 13l3 3 7-7"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          ))}
         </div>
+
         <SendMoneyModal
           icon={FaWallet}
           title={sendToOthersTitle}

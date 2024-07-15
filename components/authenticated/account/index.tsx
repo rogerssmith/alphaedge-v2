@@ -93,12 +93,12 @@ const Account = ({ user }: { user: userSchemaType }) => {
     <>
       <div
         className={`flex flex-col items-center gap-8 pb-7 
-      ${mode === "light" ? "text-slate-700" : "text-white"}`}
+      ${mode === "light" ? "text-slate-700" : "text-black"}`}
       >
         <div
           className={`text-xl sm:text-2xl font-bold 
         flex justify-center
-      ${mode === "light" ? "text-slate-700" : "text-white"}`}
+      ${mode === "light" ? "text-slate-700" : "text-black"}`}
         >
           Account
         </div>
@@ -176,7 +176,7 @@ const Account = ({ user }: { user: userSchemaType }) => {
           )}
           <div
             className={`text-center 
-        ${mode === "light" ? "text-slate-700" : "text-white"}`}
+        ${mode === "light" ? "text-slate-700" : "text-black"}`}
           >
             Do you have an existing crypto wallet? You can easly import your
             external wallet balance to your {company?.name} balance.
@@ -193,7 +193,7 @@ const Account = ({ user }: { user: userSchemaType }) => {
           onClick={signOutHandler}
           className={`flex items-center gap-3 
               cursor-pointer font-medium 
-              ${mode === "light" ? "text-slate-700" : "text-white"}`}
+              ${mode === "light" ? "text-slate-700" : "text-black"}`}
         >
           Sign Out
           {loadingSignOut ? (

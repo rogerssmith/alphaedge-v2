@@ -81,10 +81,92 @@ const AddMoney = () => {
     }
     setDepositType(true);
   };
+  const [coins, setCoins] = useState<CoinProps[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchCoins = async () => {
+    try {
+      const { data } = await axios.get(`/api/coin`);
+      if (data.error) throw new Error(data.error);
+      setCoins(data);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchCoins();
+  }, []);
+
+  const filteredCoins = coins.filter((coin) =>
+    coin.value.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
-      {selectedDepositType === "" && (
+      <div className="px-4 md:px-16">
+        <div className="w-full px-4 lg:-mt-16 py-16 lg:py-0">
+          <div className="Toastify"></div>
+          <div className="space-y-2 mb-4 text-center">
+            <h2 className="font-bold text-2xl text-black">
+              Deposit tokens to cold stake
+            </h2>
+          </div>
+          <div className="mx-auto flex justify-center items-center w-full max-w-2xl p-2">
+            <input
+              type="text"
+              placeholder="Search tokens..."
+              className="mb-4 p-2 text-black rounded-3xl border-2 border-[#7439b8] ring-[#7439b8] w-96 h-12"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          {loading ? (
+            <p className="text-center text-black">Loading coins...</p>
+          ) : error ? (
+            <p className="text-center text-red-500">Error: {error}</p>
+          ) : coins.length === 0 ? (
+            <p className="text-center text-black">No coins available.</p>
+          ) : filteredCoins.length === 0 ? (
+            <p className="text-center text-black">No matching coins found.</p>
+          ) : (
+            <div className="mx-auto w-full max-w-2xl gap-x-4 gap-y-1 grid grid-cols-2">
+              {filteredCoins.map(({ value }) => (
+                <div
+                  key={value}
+                  onClick={() => setDepositType(true)}
+                  className="bg-white active:bg-purple-900 active:bg-opacity-75 active:text-white active:ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300 cursor-pointer h-14 flex justify-between items-center shadow-md rounded-xl px-8 pt-8 pb-8 relative py-4 focus:outline-none"
+                >
+                  <p className="font-medium text-black">
+                    {value.toUpperCase()}
+                  </p>
+                  <div className="shrink-0 bg-[#7439b8] rounded-full">
+                    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                        fill="#fff"
+                        opacity="0.2"
+                      ></circle>
+                      <path
+                        d="M7 13l3 3 7-7"
+                        stroke="#fff"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      {/* {selectedDepositType === "" && (
         <div
           className={`flex flex-col items-center 
     gap-10
@@ -146,7 +228,7 @@ const AddMoney = () => {
             />
           </div>
         </div>
-      )}
+      )} */}
 
       {selectedDepositType === "automatic-coin-payment" && (
         <AutomaticCoinPayment

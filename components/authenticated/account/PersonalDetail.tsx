@@ -52,7 +52,9 @@ const DetailCard = (props: DetailCardProps) => {
             sm:cursor-pointer select-none active:scale-95 
             transition-all duration-200 
             ${
-              mode === "light" ? "" : "shadow-[#3d3d3d] hover:shadow-[#4f4f4f]"
+              mode === "light"
+                ? ""
+                : "shadow-[#3d3d3d] hover:shadow-[#4f4f4f] text-black"
             } `}
         >
           <div className="flex items-center gap-3">
@@ -77,10 +79,7 @@ const DetailCard = (props: DetailCardProps) => {
             <div className="flex flex-col">
               <div
                 style={{
-                  color:
-                    mode === "light"
-                      ? primaryLightColor
-                      : primaryVeryLightColor,
+                  color: "#e80c0c",
                 }}
                 className={`font-semibold text-[16px]`}
               >
@@ -89,7 +88,7 @@ const DetailCard = (props: DetailCardProps) => {
 
               <div
                 className={`font-normal text-sm
-              ${mode === "light" ? "text-gray-500" : "text-gray-300"}`}
+              ${mode === "light" ? "text-gray-500" : "text-black"}`}
               >
                 {content}
               </div>
@@ -145,7 +144,8 @@ const PersonalDetail = ({ user }: { user: userSchemaType }) => {
           />
         }
         className={`
-        ${mode == "light" ? "hover:bg-gray-100" : "hover:bg-gray-900"}`}
+    ${mode === "light" ? "hover:bg-gray-100" : "hover:bg-gray-900"}
+  `}
       >
         <div className="flex gap-2 py-2 items-center">
           <IoMdPerson
@@ -153,12 +153,18 @@ const PersonalDetail = ({ user }: { user: userSchemaType }) => {
             color={mode === "light" ? primaryColor : primaryLightColor}
           />
           <div
-            className={`${mode == "light" ? "text-slate-700" : "text-white"}`}
+            className={`
+        ${mode === "light" ? "text-slate-700" : "text-black"} 
+        ${
+          mode === "light" ? "group-hover:text-white" : "group-hover:text-white"
+        }
+      `}
           >
             Personal Details
           </div>
         </div>
       </Accordion.Control>
+
       <Accordion.Panel>
         <div className="flex flex-col sm:flex-row items-center gap-4 py-2 ">
           <DetailCard

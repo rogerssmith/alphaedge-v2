@@ -9,10 +9,11 @@ export default function SideBar() {
   const pathName = usePathname();
 
   const navItems = [
-    { route: "/home", label: "Home" },
+    { route: "/home", label: "Dashboard " },
+    { route: "/add-money", label: "Stake" },
     { route: "/send-money", label: "Withdraw" },
-    { route: "/card", label: "Cards" },
-    { route: "logout", label: "Sign Out" },
+    { route: "/account", label: "Profile" },
+    { route: "logout", label: "Logout" },
   ];
 
   const handleSignOut = () => {

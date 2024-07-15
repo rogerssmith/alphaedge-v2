@@ -32,7 +32,7 @@ const ModalContainer = (props: ModalContainerProps) => {
         }`,
         body: `${mode === "light" ? "bg-white" : "bg-[#121212]"}`,
         content: `${mode === "light" ? "text-slate-700" : "text-white"}`,
-        title: `font-semibold text-lg`,
+        title: `font-semibold text-lg text-black`,
       }}
     >
       {children}
