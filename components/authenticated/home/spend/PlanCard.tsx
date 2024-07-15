@@ -4,10 +4,15 @@ import { PlanProps } from "../../../../types/PlanProps";
 import { useRouter } from "next/navigation";
 
 export default function PlanCard({
-  name,
-  price,
-  roi,
+  planName,
+  minAmount,
+  maxAmount,
+  ROIDaily,
+  totalROI,
   duration,
+  createdAt,
+  referralBonus,
+  id,
   svgPath,
 }: PlanProps) {
   const router = useRouter();
@@ -23,19 +28,21 @@ export default function PlanCard({
         >
           <path d={svgPath} />
         </svg>
-        <span className="capitalize">{name}</span>
+        <span className="capitalize">{planName}</span>
       </div>
       <div className="flex flex-col text-center">
         <span>Price</span>
-        <span>{price}</span>
+        <div>
+          <span>${minAmount}</span> - <span>${maxAmount}</span>
+        </div>
       </div>
       <div className="flex flex-col text-center">
         <span>ROI</span>
-        <span>{roi}</span>
+        <span>{totalROI}% daily</span>
       </div>
       <div className="flex flex-col text-center">
         <span>Duration</span>
-        <span>{duration}</span>
+        <span>{duration} days</span>
       </div>
       <div className="flex justify-center items-center">
         <button
