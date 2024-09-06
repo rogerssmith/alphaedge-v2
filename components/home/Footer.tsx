@@ -56,8 +56,8 @@ const Footer = () => {
           >
             <h2 className="font-semibold text-lg mb-3">Contact Us</h2>
             <nav className="list-none mb-10">
-              <li className="mb-2 cursor-pointer">+1 (508) 496-3395</li>
-              <li className="mb-2 cursor-pointer">alphaedgelabs.com</li>
+              {/* <li className="mb-2 cursor-pointer">+1 (508) 496-3395</li> */}
+              <li className="mb-2 cursor-pointer">support@alphaedgelabs.com</li>
               <li className="mb-2 cursor-pointer">{company?.address}</li>
             </nav>
           </div>
