@@ -69,7 +69,7 @@ const Footer = () => {
             <nav className="list-none mb-10">
               <li>
                 <a
-                  href="https://x.com/AssetsHedge"
+                  href="https://x.com/labs_edge"
                   className="hover:text-[#9D00FF] flex items-center space-x-2"
                 >
                   <svg

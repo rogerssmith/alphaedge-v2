@@ -15,7 +15,7 @@ const Logo = (props: LogoProps) => {
   const { mode } = useTheme();
   const router = useRouter();
   const goHome = () => {
-    router.push("/home");
+    router.push("/");
   };
 
   const { company } = useCompany();
