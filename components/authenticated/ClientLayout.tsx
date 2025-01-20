@@ -12,20 +12,23 @@ const ClientLayout: React.FC<{ children: React.ReactNode }> = ({
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setSidebarOpen(true);
-      } else {
-        setSidebarOpen(false);
-      }
-    };
+    // Ensure window is defined before using it
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        if (window.innerWidth >= 1024) {
+          setSidebarOpen(true);
+        } else {
+          setSidebarOpen(false);
+        }
+      };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+      handleResize();
+      window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   const toggleSidebar = () => {
