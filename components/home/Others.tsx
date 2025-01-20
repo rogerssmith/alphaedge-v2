@@ -14,8 +14,8 @@ export default function Others() {
               width="2432"
               height="1442"
               decoding="async"
-              className="w-20 h-20 m-auto"
-              src="https://www.assetshedge.live/pvi.svg"
+              className="w-20 h-auto m-auto p-3"
+              src="/pvi.png"
               style={{ color: "transparent" }}
             />
             <h1 className="text-white font-bold capitalize">
@@ -35,8 +35,8 @@ export default function Others() {
               width="2432"
               height="1442"
               decoding="async"
-              className="w-20 h-20 m-auto"
-              src="https://www.assetshedge.live/es.svg"
+              className="w-20 h-auto m-auto p-3"
+              src="/es.png"
               style={{ color: "transparent" }}
             />
             <h1 className="text-white font-bold capitalize">
@@ -56,8 +56,8 @@ export default function Others() {
               width="2432"
               height="1442"
               decoding="async"
-              className="w-20 h-20 m-auto"
-              src="https://www.assetshedge.live/ecw.svg"
+              className="w-20 h-auto m-auto p-3"
+              src="/ecw.png"
               style={{ color: "transparent" }}
             />
             <h1 className="text-white font-bold capitalize">
@@ -76,54 +76,54 @@ export default function Others() {
           Why Stake?
         </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 mx-10 gap-x-24 gap-y-5 lg:gap-y-0 w-fit">
-          <div className="flex w-20">
+          <div className="flex items-center w-20">
             <img
               alt=""
               loading="lazy"
               width="2342"
               height="1442"
               decoding="async"
-              className="w-20 h-20"
-              src="https://www.assetshedge.live/gya.svg"
+              className="w-20 h-auto pr-3"
+              src="/gya.png"
               style={{ color: "transparent" }}
             />
             <p className="text-white capitalize">Grow Your Assets</p>
           </div>
-          <div className="flex w-20">
+          <div className="flex items-center w-20">
             <img
               alt=""
               loading="lazy"
               width="2342"
               height="1442"
               decoding="async"
-              className="w-20 h-20"
-              src="https://www.assetshedge.live/epi.svg"
+              className="w-20 h-auto pr-3"
+              src="/epi.png"
               style={{ color: "transparent" }}
             />
             <p className="text-white capitalize">Earn Passive Income</p>
           </div>
-          <div className="flex w-20">
+          <div className="flex items-center w-20">
             <img
               alt=""
               loading="lazy"
               width="2342"
               height="1442"
               decoding="async"
-              className="w-20 h-20"
-              src="https://www.assetshedge.live/ens.svg"
+              className="w-20 h-auto pr-3"
+              src="/ens.png"
               style={{ color: "transparent" }}
             />
             <p className="text-white capitalize">Enhance Network Security</p>
           </div>
-          <div className="flex w-20">
+          <div className="flex items-center w-20">
             <img
               alt=""
               loading="lazy"
               width="2342"
               height="1442"
               decoding="async"
-              className="w-20 h-20"
-              src="https://www.assetshedge.live/sbe.svg"
+              className="w-20 h-auto pr-3"
+              src="/sbe.png"
               style={{ color: "transparent" }}
             />
             <p className="text-white capitalize">
@@ -187,17 +187,6 @@ export default function Others() {
           </div>
         </div>
 
-        <img
-          alt=""
-          loading="lazy"
-          width="2342"
-          height="1442"
-          decoding="async"
-          className="absolute w-56 lg:w-80 right-20"
-          srcSet="https://www.assetshedge.live/_next/image?url=%2Fmoon-bird.png&w=3840&q=75"
-          src="https://www.assetshedge.live/_next/image?url=%2Fmoon-bird.png&w=3840&q=75"
-          style={{ color: "transparent" }}
-        />
         <div className="center z-10"></div>
         <FAQ />
       </div>

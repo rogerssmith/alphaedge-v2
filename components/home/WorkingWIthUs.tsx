@@ -11,7 +11,7 @@ export default function WorkingWithUs() {
         height="1442"
         decoding="async"
         className=""
-        src="https://www.assetshedge.live/middle.svg"
+        src="/middle.png"
         style={{ color: "transparent" }}
       />
     </div>
