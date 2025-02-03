@@ -6,7 +6,10 @@ import { Avatar } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { IoMdPerson } from "react-icons/io";
-import DeleteCardModal from "./DeleteCardModal";
+import dynamic from "next/dynamic";
+const DeleteCardModal = dynamic(() => import("./DeleteCardModal"), {
+  ssr: false,
+});
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
