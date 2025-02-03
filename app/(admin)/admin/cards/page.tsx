@@ -1,5 +1,3 @@
-"use client";
-
 import CardCard from "@/components/admin/card/CardCard";
 import useCompany from "@/components/hooks/useCompany";
 import { Loader } from "@mantine/core";
