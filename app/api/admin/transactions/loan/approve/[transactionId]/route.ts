@@ -77,7 +77,7 @@ export const PATCH = async (
       loanUser.email,
       "Loan approved",
       emailText,
-      emailHtml,
+      await emailHtml,
       company
     );
     return NextResponse.json({ message: "success" });

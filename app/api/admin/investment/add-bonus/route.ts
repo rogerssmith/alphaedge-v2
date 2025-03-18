@@ -96,7 +96,7 @@ export const POST = async (request: Request) => {
       user.email,
       savedReturn.title,
       `You have a new return in your ${updatedInvestment.planName} investment`,
-      emailHtml,
+      await emailHtml,
       company
     );
 

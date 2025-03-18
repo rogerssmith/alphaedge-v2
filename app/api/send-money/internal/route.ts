@@ -113,7 +113,7 @@ export const POST = async (request: Request) => {
       updatedSender?.email || "",
       "Transfer Successful",
       senderDesc,
-      senderEmailHtml,
+      await senderEmailHtml,
       company
     );
 
@@ -161,7 +161,7 @@ export const POST = async (request: Request) => {
         updatedReceiver?.email || "",
         "Money Received",
         receiverDesc,
-        recieverEmailHtml,
+        await recieverEmailHtml,
         company
       );
     }
@@ -203,7 +203,7 @@ export const POST = async (request: Request) => {
         receiver.email,
         "Money Received",
         receiverDesc,
-        recieverEmailHtml,
+        await recieverEmailHtml,
         company
       );
     }

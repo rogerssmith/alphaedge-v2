@@ -104,7 +104,7 @@ export const PATCH = async (
       updatedUser.email,
       "Deposit Approved",
       emailText,
-      emailHtml,
+      await emailHtml,
       company
     );
 

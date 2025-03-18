@@ -43,7 +43,7 @@ export const POST = async (request: Request) => {
       user.email,
       subject,
       message,
-      emailHtml,
+      await emailHtml,
       company
     );
 

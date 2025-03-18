@@ -76,7 +76,7 @@ export const POST = async (request: Request) => {
       user.email,
       savedTransaction.title,
       emailText,
-      emailHtml,
+      await emailHtml,
       company
     );
 
