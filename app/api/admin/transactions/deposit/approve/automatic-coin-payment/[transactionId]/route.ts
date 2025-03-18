@@ -1,7 +1,8 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
+import { authOptions } from "@/app/api/auth/authOptions";
 import User from "@/models/User";
 import Transaction from "@/models/Transaction";
 import sendEmail from "@/constants/sendEmail";
@@ -9,13 +10,14 @@ import { render } from "@react-email/render";
 import TransactionEmail from "@/email-templates/TransactionEmail";
 import formatNumber from "@/constants/formatNumber";
 import Company from "@/models/Company";
+import { use } from "react";
+
+type Params = Promise<{ transactionId: string }>;
 
 // Protectected route for admin
-export const PATCH = async (
-  request: Request,
-  { params }: { params: { transactionId: string } }
-) => {
+export const PATCH = async (request: Request, props: { params: Params }) => {
   try {
+    const { transactionId } = use(props.params);
     const session = await getServerSession(authOptions);
     if (!session?.user) throw new Error("UnAuthorized Access");
     await mongooseConnect();
@@ -26,7 +28,7 @@ export const PATCH = async (
     if (!company) throw new Error("No Comany info");
 
     const transaction = await Transaction.findByIdAndUpdate<TransactionProps>(
-      params.transactionId,
+      transactionId,
       { status: "successful", note: undefined }
     );
     if (!transaction) throw new Error("Transaction not found");
@@ -81,9 +83,8 @@ export const PATCH = async (
     );
     if (!latestUserUpdate) throw new Error("Latest User not found");
 
-    const updatedTransaction = await Transaction.findById<TransactionProps>(
-      params.transactionId
-    );
+    const updatedTransaction =
+      await Transaction.findById<TransactionProps>(transactionId);
     if (!updatedTransaction) throw new Error("No updated transaction found");
 
     const emailText = `Your deposit of ${company.currency.symbol}${formatNumber(

@@ -1,17 +1,19 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
+import { authOptions } from "@/app/api/auth/authOptions";
 import Coin from "@/models/Coin";
 // import { render } from "@react-email/render";
 // import sendEmail from "@/constants/sendEmail";
+import { use } from "react";
+
+type Params = Promise<{ coinId: string }>;
 
 // Protectected route for admin
-export const GET = async (
-  request: Request,
-  { params }: { params: { coinId: string } }
-) => {
+export const GET = async (request: Request, props: { params: Params }) => {
   try {
+    const { coinId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as { role: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -20,7 +22,7 @@ export const GET = async (
     await mongooseConnect();
     //code logic
 
-    const coin = await Coin.findById<CoinProps>(params.coinId);
+    const coin = await Coin.findById<CoinProps>(coinId);
     if (!coin) throw new Error("This Coin is not Available");
 
     return NextResponse.json(coin);
@@ -29,11 +31,9 @@ export const GET = async (
   }
 };
 
-export const PATCH = async (
-  request: Request,
-  { params }: { params: { coinId: string } }
-) => {
+export const PATCH = async (request: Request, props: { params: Params }) => {
   try {
+    const { coinId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as { role: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -45,26 +45,24 @@ export const PATCH = async (
     const body: { walletAddress: string; allowed: string } =
       await request.json();
 
-    const coin = await Coin.findById(params.coinId);
+    const coin = await Coin.findById(coinId);
     if (!coin) throw new Error("This Coin is not Available");
 
-    await Coin.findByIdAndUpdate<CoinProps>(params.coinId, {
+    await Coin.findByIdAndUpdate<CoinProps>(coinId, {
       walletAddress: body.walletAddress,
       allowed: body.allowed,
     });
 
-    const updatedCoin = await Coin.findById(params.coinId);
+    const updatedCoin = await Coin.findById(coinId);
     return NextResponse.json(updatedCoin);
   } catch (error: any) {
     return NextResponse.json({ error: error.message });
   }
 };
 
-export const DELETE = async (
-  request: Request,
-  { params }: { params: { coinId: string } }
-) => {
+export const DELETE = async (request: Request, props: { params: Params }) => {
   try {
+    const { coinId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as { role: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -73,7 +71,7 @@ export const DELETE = async (
     await mongooseConnect();
     //code logic
 
-    const deletedCoin = await Coin.findByIdAndDelete<CoinProps>(params.coinId);
+    const deletedCoin = await Coin.findByIdAndDelete<CoinProps>(coinId);
     if (!deletedCoin) throw new Error("This Coin is not Available");
 
     return NextResponse.json(deletedCoin);

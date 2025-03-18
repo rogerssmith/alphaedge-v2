@@ -1,7 +1,7 @@
 // "use client";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/authOptions";
 import ClientLayout from "@/components/authenticated/ClientLayout";
 import { signOut, useSession } from "next-auth/react";
 // import { useCallback, useEffect, useState } from "react";

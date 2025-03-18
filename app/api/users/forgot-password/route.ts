@@ -48,7 +48,7 @@ to anyone. Contact us for any assistant: ${company.baseUrl}`;
       user.email,
       "Reset Password",
       emailText,
-      htmlData,
+      await htmlData,
       company
     );
 

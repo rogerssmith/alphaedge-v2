@@ -1,16 +1,16 @@
 import mongooseConnect from "@/lib/mongoose";
 import Transaction from "@/models/Transaction";
 import { NextResponse } from "next/server";
+import { use } from "react";
 
-interface ParamsProps {
-  params: { transactionId: string };
-}
+type Params = Promise<{ transactionId: string }>;
 
-export const GET = async (request: Request, { params }: ParamsProps) => {
+export const GET = async (request: Request, props: { params: Params }) => {
   try {
+    const { transactionId } = use(props.params);
     await mongooseConnect();
     const transaction = await Transaction.findOne({
-      _id: params.transactionId,
+      _id: transactionId,
     });
     if (!transaction) throw new Error("This transaction does not exist");
     return NextResponse.json(transaction);
