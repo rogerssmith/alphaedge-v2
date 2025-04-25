@@ -1,18 +1,16 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import User from "@/models/User";
 import Transaction from "@/models/Transaction";
-import { use } from "react";
-
-type Params = Promise<{ transactionId: string }>;
 
 // Protectected route for admin
-export const DELETE = async (request: Request, props: { params: Params }) => {
+export const DELETE = async (
+  request: Request,
+  { params }: { params: { transactionId: string } }
+) => {
   try {
-    const { transactionId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as
       | { role: string; id: string }
@@ -26,8 +24,9 @@ export const DELETE = async (request: Request, props: { params: Params }) => {
     if (!admin || admin.role !== "admin")
       throw new Error("User not found (UnAuthorized Access)");
 
-    const deletedTransaction =
-      await Transaction.findByIdAndDelete(transactionId);
+    const deletedTransaction = await Transaction.findByIdAndDelete(
+      params.transactionId
+    );
 
     return NextResponse.json(deletedTransaction);
   } catch (error: any) {

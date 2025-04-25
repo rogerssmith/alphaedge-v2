@@ -7,12 +7,12 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { use } from "react";
 
-type Params = Promise<{ transactionId: string }>;
+interface PageProps {
+  params: { transactionId: string };
+}
 
-export default function Page(props: { params: Params }) {
-  const params = use(props.params);
+const Page: React.FC<PageProps> = ({ params }) => {
   const [transaction, setTransaction] = useState<TransactionProps>();
   const { data: session } = useSession();
   const userId = (session?.user as { id: string })?.id;
@@ -57,4 +57,6 @@ export default function Page(props: { params: Params }) {
     return <div>You do not have access to this transaction</div>;
 
   return <TransactionInfo transaction={transaction} />;
-}
+};
+
+export default Page;

@@ -1,8 +1,7 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import User from "@/models/User";
 import Transaction from "@/models/Transaction";
 import sendEmail from "@/constants/sendEmail";
@@ -10,14 +9,13 @@ import { render } from "@react-email/render";
 import TransactionEmail from "@/email-templates/TransactionEmail";
 import formatNumber from "@/constants/formatNumber";
 import Company from "@/models/Company";
-import { use } from "react";
-
-type Params = Promise<{ transactionId: string }>;
 
 // Protectected route for admin
-export const PATCH = async (request: Request, props: { params: Params }) => {
+export const PATCH = async (
+  request: Request,
+  { params }: { params: { transactionId: string } }
+) => {
   try {
-    const { transactionId } = use(props.params);
     const session = await getServerSession(authOptions);
     const user = session?.user as { role: string; id: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -33,7 +31,7 @@ export const PATCH = async (request: Request, props: { params: Params }) => {
     if (!admin) throw new Error("User not found (UnAuthorized Access)");
 
     const transaction = await Transaction.findByIdAndUpdate<TransactionProps>(
-      transactionId,
+      params.transactionId,
       { status: "successful", note: undefined }
     );
     if (!transaction) throw new Error("Transaction not found");
@@ -87,8 +85,9 @@ export const PATCH = async (request: Request, props: { params: Params }) => {
     );
     if (!latestUserUpdate) throw new Error("Latest User not found");
 
-    const updatedTransaction =
-      await Transaction.findById<TransactionProps>(transactionId);
+    const updatedTransaction = await Transaction.findById<TransactionProps>(
+      params.transactionId
+    );
     if (!updatedTransaction) throw new Error("No updated transaction found");
 
     const emailText = `Your deposit of ${company.currency.symbol}${formatNumber(

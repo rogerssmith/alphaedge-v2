@@ -1,6 +1,5 @@
 "use client";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Save from "@/components/authenticated/home/invest-and-earn";
 import useCompany from "@/components/hooks/useCompany";
 import useTheme from "@/components/hooks/useTheme";

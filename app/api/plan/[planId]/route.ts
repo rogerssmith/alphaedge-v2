@@ -1,15 +1,11 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 import Plan from "@/models/Plan";
 // import { render } from "@react-email/render";
 // import sendEmail from "@/constants/sendEmail";
-import { use } from "react";
-
-type Params = Promise<{ planId: string }>;
 
 interface BodyProps {
   planName: string;
@@ -21,9 +17,11 @@ interface BodyProps {
 }
 
 // Protectected route for admin
-export const GET = async (request: Request, props: { params: Params }) => {
+export const GET = async (
+  request: Request,
+  { params }: { params: { planId: string } }
+) => {
   try {
-    const { planId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as { role: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -32,7 +30,7 @@ export const GET = async (request: Request, props: { params: Params }) => {
     await mongooseConnect();
     //code logic
 
-    const plan = await Plan.findById<CoinProps>(planId);
+    const plan = await Plan.findById<CoinProps>(params.planId);
     if (!plan) throw new Error("This Coin is not Available");
 
     return NextResponse.json(plan);
@@ -41,9 +39,11 @@ export const GET = async (request: Request, props: { params: Params }) => {
   }
 };
 
-export const PATCH = async (request: Request, props: { params: Params }) => {
+export const PATCH = async (
+  request: Request,
+  { params }: { params: { planId: string } }
+) => {
   try {
-    const { planId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as { role: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -54,21 +54,23 @@ export const PATCH = async (request: Request, props: { params: Params }) => {
 
     const body: BodyProps = await request.json();
 
-    const plan = await Plan.findById(planId);
+    const plan = await Plan.findById(params.planId);
     if (!plan) throw new Error("This Plan is not Available");
 
-    await Plan.findByIdAndUpdate<CoinProps>(planId, { ...body });
+    await Plan.findByIdAndUpdate<CoinProps>(params.planId, { ...body });
 
-    const updatedPlan = await Plan.findById(planId);
+    const updatedPlan = await Plan.findById(params.planId);
     return NextResponse.json(updatedPlan);
   } catch (error: any) {
     return NextResponse.json({ error: error.message });
   }
 };
 
-export const DELETE = async (request: Request, props: { params: Params }) => {
+export const DELETE = async (
+  request: Request,
+  { params }: { params: { planId: string } }
+) => {
   try {
-    const { planId } = use(props.params);
     const session = await getServerSession(authOptions);
     const userSession = session?.user as { role: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -77,7 +79,7 @@ export const DELETE = async (request: Request, props: { params: Params }) => {
     await mongooseConnect();
     //code logic
 
-    const deletedPlan = await Plan.findByIdAndDelete<CoinProps>(planId);
+    const deletedPlan = await Plan.findByIdAndDelete<CoinProps>(params.planId);
     if (!deletedPlan) throw new Error("This Coin is not Available");
 
     return NextResponse.json(deletedPlan);

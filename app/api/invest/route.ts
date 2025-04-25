@@ -1,8 +1,7 @@
 import mongoogeConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import User from "@/models/User";
 import Investment from "@/models/Investment";
 

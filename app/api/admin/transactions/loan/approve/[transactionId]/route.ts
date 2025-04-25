@@ -1,8 +1,7 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Transaction from "@/models/Transaction";
 import User from "@/models/User";
 import sendEmail from "@/constants/sendEmail";
@@ -10,14 +9,13 @@ import { render } from "@react-email/render";
 import TransactionEmail from "@/email-templates/TransactionEmail";
 import formatNumber from "@/constants/formatNumber";
 import Company from "@/models/Company";
-import { use } from "react";
-
-type Params = Promise<{ transactionId: string }>;
 
 // Protectected route for admin
-export const PATCH = async (request: Request, props: { params: Params }) => {
+export const PATCH = async (
+  request: Request,
+  { params }: { params: { transactionId: string } }
+) => {
   try {
-    const { transactionId } = use(props.params);
     const session = await getServerSession(authOptions);
     const user = session?.user as { role: string; id: string } | undefined;
     if (!session?.user) throw new Error("UnAuthorized Access");
@@ -33,11 +31,12 @@ export const PATCH = async (request: Request, props: { params: Params }) => {
     if (!admin || admin.role !== "admin")
       throw new Error("No user found (UnAuthorized Access)");
 
-    const transaction =
-      await Transaction.findById<TransactionProps>(transactionId);
+    const transaction = await Transaction.findById<TransactionProps>(
+      params.transactionId
+    );
     if (!transaction) throw new Error("No Transaction Found");
 
-    await Transaction.findByIdAndUpdate(transactionId, {
+    await Transaction.findByIdAndUpdate(params.transactionId, {
       status: "successful",
       note: "Congrats, we approved your loan. Check your pending balance, follow the instruction the pending transaction to spend your money.",
     });

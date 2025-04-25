@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-import { authOptions } from "@/app/api/auth/authOptions";
-import { use } from "react";
-
-type Params = Promise<{ userId: string }>;
+interface ParamsProps {
+  params: { userId: string };
+}
 
 interface BodyProps {
   fullname: string;
@@ -18,11 +18,10 @@ interface BodyProps {
   address: string;
 }
 
-export const GET = async (request: Request, props: { params: Params }) => {
+export const GET = async (request: Request, { params }: ParamsProps) => {
   try {
-    const { userId } = use(props.params);
     await mongooseConnect();
-    const user = await User.findById(userId);
+    const user = await User.findById(params.userId);
     if (!user) throw new Error("NO USER FOUND");
 
     return NextResponse.json(user);
@@ -31,7 +30,7 @@ export const GET = async (request: Request, props: { params: Params }) => {
   }
 };
 
-export const PATCH = async (request: Request, props: { params: Params }) => {
+export const PATCH = async (request: Request, { params }: ParamsProps) => {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user) throw new Error("UnAuthorized Access");

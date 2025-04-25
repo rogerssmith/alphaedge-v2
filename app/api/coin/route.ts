@@ -1,8 +1,7 @@
 import mongooseConnect from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
-import { authOptions } from "@/app/api/auth/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Coin from "@/models/Coin";
 // import { render } from "@react-email/render";
 // import sendEmail from "@/constants/sendEmail";
