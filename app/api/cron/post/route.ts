@@ -104,7 +104,7 @@ export const POST = async (req: Request) => {
         curUser.email,
         curReturn.title,
         `You have a new return in your ${curInvestment.planName} investment`,
-        await emailHtml,
+        emailHtml,
         company
       );
     }

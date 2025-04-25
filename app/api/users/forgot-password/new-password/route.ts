@@ -62,7 +62,7 @@ unique password, click here.: ${company.baseUrl}.`;
       updatedUser.email,
       "Password Changed",
       emailText,
-      await emailHtml,
+      emailHtml,
       company
     );
     return NextResponse.json(result);

@@ -62,7 +62,7 @@ export const POST = async (request: Request) => {
       transactionOwner.email,
       `${updatedTransaction.title} declined`,
       emailText,
-      await emailHtml,
+      emailHtml,
       company
     );
 

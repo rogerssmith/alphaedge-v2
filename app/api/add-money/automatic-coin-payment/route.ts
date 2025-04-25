@@ -105,7 +105,7 @@ export const POST = async (request: Request) => {
       })
     );
 
-    await sendEmail(user.email, "Deposit", emailDesc, await emailHtml, company);
+    await sendEmail(user.email, "Deposit", emailDesc, emailHtml, company);
 
     return NextResponse.json(savedTransaction);
   } catch (error: any) {

@@ -73,7 +73,7 @@ export const POST = async (req: Request) => {
         savedUser.email,
         "Welcome",
         "The platform that helps you make payment locally and others round the world",
-        await welcomeEmailhtml,
+        welcomeEmailhtml,
         company
       );
     }
@@ -114,7 +114,7 @@ export const POST = async (req: Request) => {
         savedUser.email,
         "Sign Up Bonus",
         transactionEmailText,
-        await transactionEmailHtml,
+        transactionEmailHtml,
         company
       );
     }

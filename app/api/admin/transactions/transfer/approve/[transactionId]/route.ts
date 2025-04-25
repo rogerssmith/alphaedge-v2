@@ -81,7 +81,7 @@ export const PATCH = async (
       updatedUser.email,
       `${updatedTransaction.title}`,
       emailText,
-      await emailHtml,
+      emailHtml,
       company
     );
 

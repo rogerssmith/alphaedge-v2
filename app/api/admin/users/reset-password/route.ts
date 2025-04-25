@@ -64,7 +64,7 @@ export const POST = async (request: Request) => {
         user.email,
         "Password Reset",
         emailText,
-        await emailHtml,
+        emailHtml,
         company
       );
     }
