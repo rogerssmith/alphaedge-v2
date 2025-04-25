@@ -1,8 +1,16 @@
 "use client";
 
-import CardCard from "@/components/admin/card/CardCard";
+import dynamic from "next/dynamic";
+const CardCard = dynamic(() => import("@/components/admin/card/CardCard"), {
+  ssr: false,
+});
 import useCompany from "@/components/hooks/useCompany";
-import { Loader } from "@mantine/core";
+const Loader = dynamic(
+  () => import("@mantine/core").then((mod) => mod.Loader),
+  {
+    ssr: false,
+  }
+);
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
