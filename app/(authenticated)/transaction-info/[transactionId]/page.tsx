@@ -8,11 +8,7 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
-interface PageProps {
-  params: { transactionId: string };
-}
-
-const Page: React.FC<PageProps> = ({ params }) => {
+const Page = ({ params }: { params: { transactionId: string } }) => {
   const [transaction, setTransaction] = useState<TransactionProps>();
   const { data: session } = useSession();
   const userId = (session?.user as { id: string })?.id;
