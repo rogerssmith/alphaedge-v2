@@ -1,9 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-const CardCard = dynamic(() => import("@/components/admin/card/CardCard"), {
-  ssr: false,
-});
+import CardCard from "@/components/admin/card/CardCard";
 import useCompany from "@/components/hooks/useCompany";
 import { Loader } from "@mantine/core";
 import axios from "axios";
