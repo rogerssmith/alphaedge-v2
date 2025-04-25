@@ -33,8 +33,7 @@ const Otp = () => {
   const [resendHover, setResendHover] = useState(false);
 
   useEffect(() => {
-    // Ensure window is defined before using it
-    if (typeof window !== "undefined" && isTimer) {
+    if (isTimer) {
       timerRef.current = window.setInterval(() => {
         if (sec === 0 && min === 0) {
           // Timer has reached 0:00
@@ -42,6 +41,7 @@ const Otp = () => {
           setIsTimer(false);
           setMin(5);
           setSec(59);
+          // Handle any actions you want to perform when the timer is done
         } else if (sec === 0) {
           setSec(59);
           setMin((prevMin) => prevMin - 1);
@@ -52,11 +52,7 @@ const Otp = () => {
     }
 
     // Clear the interval when the component unmounts
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
-    };
+    return () => clearInterval(timerRef.current as number);
   }, [sec, min, isTimer]);
 
   const firstInputRef = useRef<HTMLInputElement>(null);
