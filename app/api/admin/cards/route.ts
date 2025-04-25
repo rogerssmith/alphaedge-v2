@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 import { authOptions } from "@/app/api/auth/authOptions";
+import { render } from "@react-email/render";
+import sendEmail from "@/constants/sendEmail";
 import Card from "@/models/Card";
 
 // Protectected route for admin
