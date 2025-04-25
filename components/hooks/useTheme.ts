@@ -7,24 +7,19 @@ interface ThemeProps {
   onInitialMode: () => void;
 }
 
-const getCurrentThemeMode = (): "light" | "dark" => {
-  if (typeof window === "undefined") return "light"; // Prevents server error
-
+const getCurrentThemMode = (): "light" | "dark" => {
   const themeMode = localStorage.getItem("theme-mode");
-  return themeMode === "dark" ? "dark" : "light";
+  if (!themeMode || themeMode === "light") return "light";
+  return "dark";
 };
 
 const onDarkModeHandler = (): { mode: "dark" } => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("theme-mode", "dark");
-  }
+  localStorage.setItem("theme-mode", "dark");
   return { mode: "dark" };
 };
 
 const onLightModeHandler = (): { mode: "light" } => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("theme-mode", "light");
-  }
+  localStorage.setItem("theme-mode", "light");
   return { mode: "light" };
 };
 
@@ -32,7 +27,7 @@ const useTheme = create<ThemeProps>((set) => ({
   mode: "light",
   onDarkMode: () => set(onDarkModeHandler),
   onLightMode: () => set(onLightModeHandler),
-  onInitialMode: () => set({ mode: getCurrentThemeMode() }),
+  onInitialMode: () => set({ mode: getCurrentThemMode() }),
 }));
 
 export default useTheme;

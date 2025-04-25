@@ -15,4 +15,4 @@ const nextConfig = {
   serverExternalPackages: ["@react-email/components", "@react-email/render"],
 };
 
-export default nextConfig;
+module.exports = nextConfig;
