@@ -5,12 +5,7 @@ const CardCard = dynamic(() => import("@/components/admin/card/CardCard"), {
   ssr: false,
 });
 import useCompany from "@/components/hooks/useCompany";
-const Loader = dynamic(
-  () => import("@mantine/core").then((mod) => mod.Loader),
-  {
-    ssr: false,
-  }
-);
+import { Loader } from "@mantine/core";
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
