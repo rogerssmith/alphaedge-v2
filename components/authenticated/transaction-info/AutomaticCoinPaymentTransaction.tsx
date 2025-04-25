@@ -112,6 +112,25 @@ const AutomaticCoinPaymentTransaction = (
     getPaymentStatus();
   }, [getPaymentStatus]);
 
+  // useEffect(() => {
+  //   if (!isEpired) {
+  //     timerRef.current = window.setInterval(() => {
+  //       if (displayMin < 0) {
+  //         // Timer has reached 0:00
+  //         clearInterval(timerRef.current as number);
+  //       } else if (displaySec === 0) {
+  //         getPaymentStatus();
+  //         setDisplaySec(59);
+  //         setDisplayMin((prevMin) => prevMin - 1);
+  //       } else {
+  //         setDisplaySec((prevSec) => prevSec - 1);
+  //       }
+  //     }, 1000);
+  //   }
+  //   // Clear the interval when the component unmounts
+  //   return () => clearInterval(timerRef.current as number);
+  // }, [displayMin, displaySec, getPaymentStatus, isEpired, minutes, seconds]);
+
   return (
     <div className="flex flex-col gap-5">
       {!isEpired && <div>Scan QR code or Copy Wallet address</div>}
