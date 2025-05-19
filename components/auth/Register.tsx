@@ -144,7 +144,7 @@ const Register = (props: RegisterProps) => {
             onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
           />
 
-          <TextInput
+          {/* <TextInput
             id="refUsername"
             icon={FaUserAlt}
             placeholder="Enter Referral Username (optional)"
@@ -152,7 +152,7 @@ const Register = (props: RegisterProps) => {
             onChange={(e) =>
               setInputs({ ...inputs, refUsername: e.target.value })
             }
-          />
+          /> */}
           <Button
             outline={false}
             small={false}
